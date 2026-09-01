@@ -1,0 +1,39 @@
+:root {
+  /* Cores principais da marca */
+  --color-primary: #8b2c28;
+  --color-primary-hover: #6f221f;
+
+  --color-secondary: #8b9ebe;
+  --color-secondary-hover: #6f7fa0;
+
+  /* raio padrão dos cards, e cores de texto para o card secundário */
+  --radius-card: 20px;
+  --color-on-secondary: #1f2a3d;
+  --color-on-secondary-soft: rgba(31, 42, 61, 0.72);
+
+   /* NOVO: raio padrão pros controles pequenos (select, botão de busca) */
+  --radius-control: 8px;
+  
+  /* Cor exclusiva do botão do WhatsApp */
+  --color-whatsapp: #1ba858; /* verde original do botão */
+  --color-whatsapp-hover: #16994c; /* verde original do hover */
+
+  /* Textos */
+  --color-text-dark: #111111; /* título "Buscar imóveis" e ícone do hambúrguer */
+  --color-text-medium: #222222; /* links do menu */
+  --color-text-light: #888888; /* placeholder dos selects */
+  --color-text-disabled: #aaaaaa; /* texto do select desabilitado */
+
+  /* Fundos e bordas neutras */
+  --color-white: #ffffff;
+  --color-bg-hover: #f2f2f2; /* hover dos itens do menu */
+  --color-border-light: #dddddd; /* borda padrão dos selects */
+  --color-bg-disabled: #e5e7e7; /* fundo do select desabilitado */
+  --color-border-disabled: #e5e7e7; /* borda do select desabilitado */
+
+  /* Sombra */
+  --color-shadow: rgba(0, 0, 0, 0.15);
+
+  /* NOVO: altura do header, atualizada via JS (fallback 80px caso o JS não rode a tempo) */
+  --header-height: 80px;
+}

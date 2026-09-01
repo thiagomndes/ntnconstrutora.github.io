@@ -1,0 +1,151 @@
+/* --- Section 1 --- */
+
+.carousel {
+  max-width: 1340px;
+  padding: 5px 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: passar 18s infinite;
+}
+
+/* Imagens dentro do carrossel */
+.slides img {
+  max-width: 100%;
+  display: block;
+  width: 33.333%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center; /* corta a imagem */
+}
+/* Animação */
+@keyframes passar {
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  33.333% {
+    transform: translateX(-33.333%);
+  }
+  63.333% {
+    transform: translateX(-33.333%);
+  }
+  66.666% {
+    transform: translateX(-66.666%);
+  }
+  96.666% {
+    transform: translateX(-66.666%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* --- Section 2 --- */
+
+.section2 {
+  max-width: 1330px;
+  padding: 10px 30px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  align-items: center;
+  gap: 2rem;
+}
+
+.texto-ape {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.texto-ape h3 {
+  max-width: 62ch; /* mantém a linha confortável de ler, mesmo em telas largas */
+}
+
+.blocos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+
+/* Card "Agende sua Visita" — cor primária, tom quente de ação */
+.agenda {
+  margin: 0;
+  padding: 48px 28px;
+  background: linear-gradient(
+    155deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 14px 30px -14px var(--color-shadow);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.agenda:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 38px -16px var(--color-shadow);
+}
+
+.agenda h2 {
+  color: var(--color-white);
+  margin: 0 0 10px;
+}
+
+.agenda h3 {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+/* Card "Simule seu Financiamento" — cor secundária, tom sóbrio de confiança */
+.simule {
+  margin: 0;
+  padding: 48px 28px;
+  background: linear-gradient(
+    155deg,
+    var(--color-secondary) 0%,
+    var(--color-secondary-hover) 100%
+  );
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 14px 30px -14px var(--color-shadow);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.simule:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 38px -16px var(--color-shadow);
+}
+
+.simule h2 {
+  color: var(--color-on-secondary);
+  margin: 0 0 10px;
+}
+
+.simule h3 {
+  text-align: center;
+  color: var(--color-on-secondary-soft);
+  margin: 0;
+}

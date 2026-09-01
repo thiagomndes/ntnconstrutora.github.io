@@ -1,0 +1,237 @@
+/* Cabeçalho */
+.header {
+  display: flex;
+  max-width: 1399px;
+  padding: 10px 30px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px var(--color-shadow); /* AJUSTE: usa a variável de sombra ao invés de rgba solta */
+}
+
+/* Campos de busca e botão whatsapp */
+.header .nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  width: auto; /* AJUSTE: "0 auto" não é um valor válido pra width, corrigido */
+  cursor: pointer;
+}
+
+.header .header-nome {
+  height: 50px;
+  cursor: pointer;
+  font-weight: 700; /* AJUSTE: deixa o nome da marca com mais peso visual */
+  letter-spacing: -0.01em; /* AJUSTE: aperta um pouco o rastreamento pra parecer mais "logotipo" */
+}
+
+.header .logo-nome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .ntn {
+  color: var(--color-primary);
+}
+.header .construtora {
+  color: var(--color-secondary-hover); /* AJUSTE: era --color-secondary; o hover tem mais contraste ao lado do "NTN" em vermelho */
+}
+
+header .menu {
+  display: flex;
+  justify-content: center; /* AJUSTE: corrigido typo "justtify-content" */
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Caixas de Busca */
+.busca-imoveis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.busca-imoveis select {
+  flex-wrap: wrap;
+  width: 150px;
+  height: 48px;
+  padding: 0 10px 0 12px;
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-control); /* AJUSTE: usa token ao invés de 8px fixo */
+  background-color: var(--color-white);
+  color: var(--color-text-light);
+  font-size: 15px;
+  cursor: pointer;
+  appearance: none;
+  background-repeat: no-repeat;
+  transition: border-color 0.2s ease; /* AJUSTE: transição suave ao focar */
+
+  /* Seta (o SVG é embutido via data-uri, por isso a cor vai em hexadecimal
+     codificado como %23 = # ; se trocar --color-primary, troque aqui também) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238B2C28' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+
+  background-position: right 10px center;
+}
+
+/* Campo de cidade desativado */
+
+.busca-imoveis select:disabled {
+  background-color: var(--color-bg-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+/* Quando estiver ativo */
+
+.busca-imoveis select:focus {
+  border-color: var(--color-primary);
+  outline: none; /* AJUSTE: remove o outline padrão do navegador já que a borda colorida cumpre esse papel */
+}
+
+/* Botão de busca */
+
+.buscar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 18px; /* AJUSTE: era "0 8px", ficava muito apertado do lado do texto "Buscar" */
+  border: none;
+  border-radius: var(--radius-control); /* AJUSTE: usa token */
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: bold;
+  gap: 9px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; /* AJUSTE: transição consistente com os cards */
+}
+
+.buscar:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px); /* AJUSTE: mesma linguagem de "elevação" usada nos cards */
+  box-shadow: 0 8px 16px -8px var(--color-shadow);
+}
+
+/* Ícone de Busca */
+.icone-busca {
+  font-size: 27px;
+  line-height: 0;
+  font-weight: normal;
+}
+
+.botao-wpp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 40px;
+  padding: 10px 40px 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.3;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.botao-wpp:hover {
+  background-color: var(--color-whatsapp-hover);
+}
+
+/* Texto do botão */
+.texto-wpp {
+  white-space: nowrap;
+}
+
+/* AVATAR QUE "VAZA" PRA FORA DO BOTÃO */
+.avatar-wpp {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid var(--color-secondary);
+  background-color: var(--color-white);
+  overflow: visible;
+}
+
+/* Imagem do avatar */
+.avatar-wpp img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+/* BOLINHA VERDE DE STATUS ONLINE */
+.status-wpp {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-whatsapp);
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+}
+
+.botao-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: background-color 0.2s ease; /* AJUSTE: faltava transição no hover */
+}
+
+.botao-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover); /* AJUSTE: era um hex solto (#1ebe5b) diferente do hover já definido em root */
+}
+
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+ul a {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 5px;
+  color: var(--color-text-medium); /* AJUSTE: era #333 fixo, agora usa o token de texto */
+  transition: color 0.2s ease; /* AJUSTE: prepara a transição pro hover abaixo */
+}
+
+ul a:hover {
+  color: var(--color-primary); /* AJUSTE: novo — links do menu reagem com a cor da marca ao passar o mouse */
+}
