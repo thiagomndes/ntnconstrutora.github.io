@@ -71,6 +71,11 @@
 
 .texto-ape h3 {
   max-width: 62ch; /* mantém a linha confortável de ler, mesmo em telas largas */
+  text-align: justify;
+}
+
+.bold {
+  font-weight: bold;
 }
 
 .blocos {
