@@ -11,9 +11,9 @@
   --color-on-secondary: #1f2a3d;
   --color-on-secondary-soft: rgba(31, 42, 61, 0.72);
 
-   /* NOVO: raio padrão pros controles pequenos (select, botão de busca) */
+   /* raio padrão pros controles pequenos (select, botão de busca) */
   --radius-control: 8px;
-  
+
   /* Cor exclusiva do botão do WhatsApp */
   --color-whatsapp: #1ba858; /* verde original do botão */
   --color-whatsapp-hover: #16994c; /* verde original do hover */
@@ -34,6 +34,679 @@
   /* Sombra */
   --color-shadow: rgba(0, 0, 0, 0.15);
 
-  /* NOVO: altura do header, atualizada via JS (fallback 80px caso o JS não rode a tempo) */
+  /* altura do header, atualizada via JS (fallback 80px caso o JS não rode a tempo) */
   --header-height: 80px;
+
+  /* Superfícies para as novas seções (destaques, motivos, footer) */
+  --color-surface: #ffffff;
+  --color-surface-muted: #f6f4f1;
+  --color-footer-bg: #1f1a19;
+  --color-footer-text: rgba(255, 255, 255, 0.75);
+  --color-footer-heading: #ffffff;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: "Segoe UI", Arial, sans-serif;
+  background-color: #f0f0f0;
+}
+
+main h1 {
+  /* mínimo ~21px, ideal ~1.8vw, máximo ~34px */
+  font-size: clamp(1.35rem, 1rem + 1.8vw, 2.1rem);
+  line-height: 1.2;
+  color: var(--color-text-medium);
+}
+
+body h2 {
+  /* mínimo ~18px, ideal ~1.2vw, máximo ~26px */
+  font-size: clamp(1.1rem, 0.95rem + 1.2vw, 1.6rem);
+  font-weight: 600;
+  line-height: 1.3;
+}
+
+body h3 {
+  /* mínimo ~15px, ideal ~0.5vw, máximo ~18px */
+  font-size: clamp(0.9rem, 0.82rem + 0.5vw, 1.15rem);
+  font-weight: normal;
+  line-height: 1.6;
+  text-align: start;
+  color: var(--color-text-medium);
+}
+
+/* Estado inicial: escondido */
+.reveal {
+  opacity: 0;
+  transform: translateY(40px);
+  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+}
+
+/* Estado visível, adicionado via JS */
+.reveal.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Efeito cascata quando vários elementos aparecem juntos */
+.blocos .reveal:nth-child(1) { transition-delay: 0s; }
+.blocos .reveal:nth-child(2) { transition-delay: 0.15s; }
+.motivos .reveal:nth-child(1) { transition-delay: 0s; }
+.motivos .reveal:nth-child(2) { transition-delay: 0.1s; }
+.motivos .reveal:nth-child(3) { transition-delay: 0.2s; }
+.motivos .reveal:nth-child(4) { transition-delay: 0.3s; }
+
+/* ==================== Cabeçalho ==================== */
+
+.header {
+  display: flex;
+  max-width: 1399px;
+  padding: 10px 30px;
+  margin: 0 auto;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #f8f8f8;
+  box-shadow: 0 2px 4px var(--color-shadow);
+}
+
+.header .nav {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+header .logo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  height: 60px;
+  width: auto;
+  cursor: pointer;
+}
+
+.header .header-nome {
+  height: 50px;
+  cursor: pointer;
+  font-weight: 700;
+  letter-spacing: -0.01em;
+}
+
+.header .logo-nome {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+}
+
+.header .ntn {
+  color: var(--color-primary);
+}
+.header .construtora {
+  color: var(--color-secondary-hover);
+}
+
+header .menu {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+/* Caixas de Busca */
+.busca-imoveis {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.busca-imoveis select {
+  flex-wrap: wrap;
+  width: 150px;
+  height: 48px;
+  padding: 0 10px 0 12px;
+  border: 2px solid var(--color-border-light);
+  border-radius: var(--radius-control);
+  background-color: var(--color-white);
+  color: var(--color-text-light);
+  font-size: 15px;
+  cursor: pointer;
+  appearance: none;
+  background-repeat: no-repeat;
+  transition: border-color 0.2s ease;
+
+  /* Seta (o SVG é embutido via data-uri, por isso a cor vai em hexadecimal
+     codificado como %23 = # ; se trocar --color-primary, troque aqui também) */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='14' height='14' viewBox='0 0 24 24' fill='none' stroke='%238B2C28' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+
+  background-position: right 10px center;
+}
+
+.busca-imoveis select:disabled {
+  background-color: var(--color-bg-disabled);
+  border-color: var(--color-border-disabled);
+  color: var(--color-text-disabled);
+  cursor: not-allowed;
+}
+
+.busca-imoveis select:focus {
+  border-color: var(--color-primary);
+  outline: none;
+}
+
+/* Botão de busca */
+.buscar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 18px;
+  border: none;
+  border-radius: var(--radius-control);
+  background-color: var(--color-primary);
+  color: var(--color-white);
+  font-size: 15px;
+  font-weight: bold;
+  gap: 9px;
+  cursor: pointer;
+  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.buscar:hover {
+  background-color: var(--color-primary-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px -8px var(--color-shadow);
+}
+
+.icone-busca {
+  font-size: 27px;
+  line-height: 0;
+  font-weight: normal;
+}
+
+.botao-wpp {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  text-decoration: none;
+  border-radius: 40px;
+  padding: 10px 40px 10px 20px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  font-size: 14px;
+  line-height: 1.3;
+  box-sizing: border-box;
+  transition: 0.2s;
+}
+
+.botao-wpp:hover {
+  background-color: var(--color-whatsapp-hover);
+}
+
+.texto-wpp {
+  white-space: nowrap;
+}
+
+.avatar-wpp {
+  position: absolute;
+  right: -18px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  border: 3px solid var(--color-secondary);
+  background-color: var(--color-white);
+  overflow: visible;
+}
+
+.avatar-wpp img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}
+
+.status-wpp {
+  position: absolute;
+  bottom: 2px;
+  right: 2px;
+  width: 12px;
+  height: 12px;
+  background-color: var(--color-whatsapp);
+  border: 2px solid var(--color-white);
+  border-radius: 50%;
+}
+
+.botao-whatsapp {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 56px;
+  height: 56px;
+  background-color: var(--color-whatsapp);
+  color: var(--color-white);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
+  z-index: 999;
+  transition: background-color 0.2s ease;
+}
+
+.botao-whatsapp:hover {
+  background-color: var(--color-whatsapp-hover);
+}
+
+header ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 15px;
+}
+
+ul a {
+  display: block;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 5px;
+  color: var(--color-text-medium);
+  transition: color 0.2s ease;
+}
+
+ul a:hover {
+  color: var(--color-primary);
+}
+
+/* UL fora do media, aplicado por padrão (o menu de texto some, sobra a busca) */
+.header ul {
+  display: none;
+}
+
+@media (min-width: 979px) {
+  .header .botao-whatsapp {
+    display: none;
+  }
+}
+
+@media (max-width: 980px) {
+  .header .texto-wpp {
+    display: none;
+  }
+
+  .header .avatar-wpp {
+    display: none;
+  }
+
+  .header .botao-wpp {
+    display: none;
+  }
+}
+
+@media (max-width: 800px) {
+  .header .header-nome {
+    display: none;
+  }
+}
+
+@media (max-width: 536px) {
+  .botao-whatsapp:hover {
+    background-color: var(--color-whatsapp-hover);
+  }
+
+  .buscar .texto-busca {
+    display: none;
+  }
+
+  .buscar .icone-busca {
+    padding: 5px;
+    font-size: 30px;
+  }
+
+  .busca-imoveis select {
+    width: 100px;
+    height: 48px;
+  }
+}
+
+@media (max-width: 350px) {
+  .header {
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 20px;
+  }
+}
+
+/* --- Carrossel --- */
+
+.carousel {
+  max-width: 1340px;
+  padding: 5px 0;
+  margin: 0 auto;
+  width: 100%;
+  height: 500px;
+  overflow: hidden;
+  margin-top: 0;
+}
+
+.slides {
+  display: flex;
+  width: 300%;
+  height: 100%;
+  animation: passar 18s infinite;
+}
+
+.slides img {
+  max-width: 100%;
+  display: block;
+  width: 33.333%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@keyframes passar {
+  0% { transform: translateX(0); }
+  30% { transform: translateX(0); }
+  33.333% { transform: translateX(-33.333%); }
+  63.333% { transform: translateX(-33.333%); }
+  66.666% { transform: translateX(-66.666%); }
+  96.666% { transform: translateX(-66.666%); }
+  100% { transform: translateX(0); }
+}
+
+/* --- Apresentação / CTAs --- */
+
+.section2 {
+  max-width: 1330px;
+  padding: 10px 30px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+  align-items: center;
+  gap: 2rem;
+}
+
+.texto-ape {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.texto-ape h3 {
+  max-width: 62ch;
+  text-align: justify;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.blocos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+  margin: 40px 0;
+}
+
+.agenda {
+  margin: 0;
+  padding: 48px 28px;
+  background: linear-gradient(155deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 14px 30px -14px var(--color-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.agenda:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 38px -16px var(--color-shadow);
+}
+
+.agenda h2 {
+  color: var(--color-white);
+  margin: 0 0 10px;
+}
+
+.agenda h3 {
+  text-align: center;
+  color: rgba(255, 255, 255, 0.82);
+  margin: 0;
+}
+
+.simule {
+  margin: 0;
+  padding: 48px 28px;
+  background: linear-gradient(155deg, var(--color-secondary) 0%, var(--color-secondary-hover) 100%);
+  border-radius: var(--radius-card);
+  cursor: pointer;
+  text-align: center;
+  box-sizing: border-box;
+  box-shadow: 0 14px 30px -14px var(--color-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.simule:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 38px -16px var(--color-shadow);
+}
+
+.simule h2 {
+  color: var(--color-on-secondary);
+  margin: 0 0 10px;
+}
+
+.simule h3 {
+  text-align: center;
+  color: var(--color-on-secondary-soft);
+  margin: 0;
+}
+
+/* --- Imóveis em destaque --- */
+
+.section-destaques {
+  max-width: 1330px;
+  padding: 30px 30px 10px;
+  margin: 0 auto;
+}
+
+.titulo-secao {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.busca-mensagem {
+  margin: 0 0 24px;
+  padding: 16px 20px;
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-medium);
+}
+
+.busca-mensagem[hidden] {
+  display: none;
+}
+
+.lista-imoveis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.imovel.destaque {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 10px 24px -14px var(--color-shadow);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.imovel.destaque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 32px -16px var(--color-shadow);
+}
+
+.imovel.destaque img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.imovel-corpo {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.imovel-cidade {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.imovel-corpo h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.imovel-corpo p {
+  margin: 0;
+  color: var(--color-text-medium);
+}
+
+/* Card escondido pela busca (mantido no DOM, só oculto visualmente) */
+.imovel.destaque.oculto {
+  display: none;
+}
+
+/* --- Por que escolher a NTN --- */
+
+.section-porque {
+  max-width: 1330px;
+  padding: 40px 30px 60px;
+  margin: 0 auto;
+}
+
+.section-porque > h2 {
+  margin: 0 0 28px;
+}
+
+.motivos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.motivo {
+  padding: 24px 22px;
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: 0 8px 20px -16px var(--color-shadow);
+}
+
+.motivo-titulo {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.motivo p {
+  margin: 0;
+  color: var(--color-text-medium);
+}
+
+/* --- Rodapé --- */
+
+.footer {
+  background-color: var(--color-footer-bg);
+  color: var(--color-footer-text);
+  margin-top: 20px;
+}
+
+.footer-conteudo {
+  max-width: 1330px;
+  margin: 0 auto;
+  padding: 48px 30px 32px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 32px;
+}
+
+.footer-marca {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.footer-marca .logo-nome {
+  justify-content: flex-start;
+}
+
+.footer-nome {
+  margin: 0;
+  font-size: 1.2rem;
+}
+
+.footer-marca p {
+  margin: 0;
+  max-width: 40ch;
+  line-height: 1.6;
+}
+
+.footer-titulo {
+  color: var(--color-footer-heading);
+  margin: 0 0 14px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.footer-links {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.footer-links a {
+  color: var(--color-footer-text);
+  text-decoration: none;
+  font-weight: normal;
+  padding: 0;
+  transition: color 0.2s ease;
+}
+
+.footer-links a:hover {
+  color: var(--color-white);
+}
+
+.footer-base {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 18px 30px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.footer-base p {
+  margin: 0;
 }

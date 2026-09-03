@@ -4,11 +4,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Início</title>
+  <title>NTN Construtora | Início</title>
   <link rel="stylesheet" href="./assets/styles.css">
-  <link rel="stylesheet" href="./assets/reveal.css">
   <script src="./assets/script.js" defer></script>
-  <script src="./assets/reveal.js" defer></script>
 </head>
 
 <body>
@@ -77,9 +75,9 @@
   <main class="main">
     <section class="carousel reveal">
       <div class="slides">
-        <img src="./img/img1.png" alt="imagem 1">
-        <img src="./img/img2.png" alt="imagem 2">
-        <img src="./img/img3.png" alt="imagem 3">
+        <img src="./img/img1.png" alt="Fachada de empreendimento NTN Construtora">
+        <img src="./img/img2.png" alt="Apartamentos prontos para morar">
+        <img src="./img/img3.png" alt="Financiamento facilitado Minha Casa Minha Vida">
       </div>
     </section>
 
@@ -88,49 +86,130 @@
       <div class="texto-ape reveal">
         <h1> Tem um APÊ esperando por você </h1>
 
-        <h3>Conquistar a <span class= "bold">casa própria</span> é um grande passo: um lar só seu, o fim do aluguel e um futuro melhor. A <span class= "bold">NTN Construtora</span> tem soluções para cada momento de vida, em todo o Brasil, com financiamento e condições exclusivas. Conte com quem mais entende de <span class= "bold">Minha Casa Minha Vida</span> e já entregou mais de 550 mil chaves. Se você chegou até aqui, é porque tem um apê NTN Construtora pra transformar seu futuro hoje!!</h3>
+        <h3>Conquistar a <span class="bold">casa própria</span> é um grande passo: um lar só seu, o fim do aluguel e um futuro melhor. A <span class="bold">NTN Construtora</span> tem soluções para cada momento de vida, em todo o Brasil, com financiamento e condições exclusivas. Conte com quem mais entende de <span class="bold">Minha Casa Minha Vida</span> e já entregou mais de 550 mil chaves. Se você chegou até aqui, é porque tem um apê NTN Construtora pra transformar seu futuro hoje!!</h3>
       </div>
 
       <section class="blocos">
         <div class="agenda reveal">
-          <h2><span class= "bold">Agende sua Visita</span></h2>
+          <h2><span class="bold">Agende sua Visita</span></h2>
           <h3>Fale conosco agora mesmo</h3>
         </div>
         <div class="simule reveal">
-          <h2><span class= "bold">Simule seu Financiamento</span></h2>
+          <h2><span class="bold">Simule seu Financiamento</span></h2>
           <h3>Consulte as Vantagens</h3>
         </div>
       </section>
     </section>
 
-    <section>
-      <div>
+    <section class="section-destaques">
+      <div class="titulo-secao reveal">
         <h2>Imóveis em Destaque</h2>
+        <h3>Empreendimentos disponíveis em Teresina e Timon</h3>
       </div>
 
-      <div>
-        <div class="imovel destaque reveal">
-          <img src="./img/imovel1.png" alt="Imagem do imóvel 1">
-          <h3>Imóvel 1</h3>
-          <p>Descrição do imóvel 1.</p>
+      <!-- Mensagem exibida quando a busca não encontra imóveis na cidade escolhida -->
+      <div class="busca-mensagem" hidden></div>
+
+      <!-- Lista de imóveis em destaque -->
+      <div class="lista-imoveis">
+        <div class="imovel destaque reveal" data-cidade="teresina">
+          <img src="./img/imovel1.png" alt="Fachada do Residencial Ipê, em Teresina">
+          <div class="imovel-corpo">
+            <span class="imovel-cidade">Teresina - PI</span>
+            <h3>Residencial Ipê</h3>
+            <p>Apartamentos de 2 e 3 quartos a poucos minutos do centro, com área de lazer completa e entrega imediata.</p>
+          </div>
         </div>
 
-        <div class="imovel destaque reveal">
-          <img src="./img/imovel2.png" alt="Imagem do imóvel 2">
-          <h3>Imóvel 2</h3>
-          <p>Descrição do imóvel 2.</p>
+        <div class="imovel destaque reveal" data-cidade="teresina">
+          <img src="./img/imovel2.png" alt="Fachada do Jardins do Poti, em Teresina">
+          <div class="imovel-corpo">
+            <span class="imovel-cidade">Teresina - PI</span>
+            <h3>Jardins do Poti</h3>
+            <p>Condomínio fechado próximo à orla do Rio Poti, com plantas de 2 quartos e condições facilitadas de financiamento.</p>
+          </div>
         </div>
 
-        <div class="imovel destaque reveal">
-          <img src="./img/imovel3.png" alt="Imagem do imóvel 3">
-          <h3>Imóvel 3</h3>
-          <p>Descrição do imóvel 3.</p>
+        <div class="imovel destaque reveal" data-cidade="timon">
+          <img src="./img/imovel3.png" alt="Fachada do Vila Parnaíba, em Timon">
+          <div class="imovel-corpo">
+            <span class="imovel-cidade">Timon - MA</span>
+            <h3>Vila Parnaíba</h3>
+            <p>Casas térreas com quintal, em bairro residencial tranquilo, ideais para quem busca o primeiro imóvel na família.</p>
+          </div>
         </div>
       </div>
     </section>
 
+    <section class="section-porque">
+      <h2 class="reveal">Por que famílias escolhem construir com a NTN Construtora?</h2>
+
+      <div class="motivos">
+        <div class="motivo reveal">
+          <h3 class="motivo-titulo">Mais de 550 mil chaves entregues</h3>
+          <p>Décadas de experiência construindo lares em todo o Brasil, com prazos cumpridos e obras concluídas.</p>
+        </div>
+        <div class="motivo reveal">
+          <h3 class="motivo-titulo">Especialistas em Minha Casa Minha Vida</h3>
+          <p>Ajudamos você a entender as faixas de financiamento e a conseguir as melhores condições disponíveis.</p>
+        </div>
+        <div class="motivo reveal">
+          <h3 class="motivo-titulo">Atendimento próximo, do início à entrega</h3>
+          <p>Um consultor acompanha você desde a simulação até a entrega das chaves, tirando dúvidas pelo WhatsApp.</p>
+        </div>
+        <div class="motivo reveal">
+          <h3 class="motivo-titulo">Localização estratégica</h3>
+          <p>Empreendimentos em bairros com fácil acesso a escolas, comércio e transporte público.</p>
+        </div>
+      </div>
+    </section>
 
   </main>
+
+  <footer class="footer">
+    <div class="footer-conteudo">
+
+      <div class="footer-coluna footer-marca">
+        <span class="logo-nome">
+          <img src="./img/logo.png" alt="Logo NTN Construtora" class="logo">
+          <h2 class="footer-nome"><span class="ntn">NTN</span> <span class="construtora">Construtora</span></h2>
+        </span>
+        <p>Construindo lares e transformando futuros em todo o Brasil, com mais de 550 mil chaves entregues.</p>
+      </div>
+
+      <div class="footer-coluna">
+        <h3 class="footer-titulo">Links rápidos</h3>
+        <ul class="footer-links">
+          <li><a href="index.html">Início</a></li>
+          <li><a href="sobre.html">Sobre nós</a></li>
+          <li><a href="contato.html">Contato</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-coluna">
+        <h3 class="footer-titulo">Atendimento</h3>
+        <ul class="footer-links">
+          <li><a href="https://wa.me/5586999999999" target="_blank" rel="noopener noreferrer">WhatsApp: (86) 99999-9999</a></li>
+          <li><a href="mailto:contato@ntnconstrutora.com.br">contato@ntnconstrutora.com.br</a></li>
+          <li>Teresina - PI e Timon - MA</li>
+        </ul>
+      </div>
+
+      <div class="footer-coluna">
+        <h3 class="footer-titulo">Redes sociais</h3>
+        <ul class="footer-links">
+          <li><a href="#" target="_blank" rel="noopener noreferrer">Instagram</a></li>
+          <li><a href="#" target="_blank" rel="noopener noreferrer">Facebook</a></li>
+        </ul>
+      </div>
+
+    </div>
+
+    <div class="footer-base">
+      <p>&copy; <span class="ano-atual">2026</span> NTN Construtora. Todos os direitos reservados.</p>
+    </div>
+  </footer>
+
 </body>
 
 </html>

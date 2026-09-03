@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
 
-  // Mapeamento de cidades por estado (ajuste/complete a lista como precisar)
+  // Mapeamento de cidades por estado
   const cidadesPorEstado = {
     piaui: [
       'Teresina',
@@ -24,78 +24,121 @@ document.addEventListener('DOMContentLoaded', () => {
     ]
   };
 
+  // Cidades em que a NTN Construtora tem imóveis cadastrados hoje.
+  // O filtro de busca só retorna resultados para estas duas.
+  const cidadesComImoveis = ['teresina', 'timon'];
+
   const selectEstado = document.querySelector('.estado');
   const selectCidade = document.querySelector('.cidade');
   const botaoBuscar = document.querySelector('.buscar');
+  const listaImoveis = document.querySelector('.lista-imoveis');
+  const mensagemBusca = document.querySelector('.busca-mensagem');
+
+  const slugify = (texto) =>
+    texto
+      .toLowerCase()
+      .normalize('NFD')
+      .replace(/[\u0300-\u036f]/g, '')
+      .replace(/\s+/g, '-');
 
   // Quando o estado muda, popula e libera o select de cidade
-  selectEstado.addEventListener('change', () => {
-    const estadoSelecionado = selectEstado.value;
+  if (selectEstado && selectCidade) {
+    selectEstado.addEventListener('change', () => {
+      const estadoSelecionado = selectEstado.value;
 
-    // Reseta o select de cidade
-    selectCidade.innerHTML = '<option value="">Cidade</option>';
+      selectCidade.innerHTML = '<option value="">Cidade</option>';
 
-    if (!estadoSelecionado || !cidadesPorEstado[estadoSelecionado]) {
-      selectCidade.disabled = true;
-      return;
-    }
+      if (!estadoSelecionado || !cidadesPorEstado[estadoSelecionado]) {
+        selectCidade.disabled = true;
+        return;
+      }
 
-    // Preenche com as cidades do estado escolhido
-    cidadesPorEstado[estadoSelecionado].forEach((cidade) => {
-      const option = document.createElement('option');
-      // value "slugificado" (sem acento, minúsculo, com hífen)
-      option.value = cidade
-        .toLowerCase()
-        .normalize('NFD')
-        .replace(/[\u0300-\u036f]/g, '')
-        .replace(/\s+/g, '-');
-      option.textContent = cidade;
-      selectCidade.appendChild(option);
+      cidadesPorEstado[estadoSelecionado].forEach((cidade) => {
+        const option = document.createElement('option');
+        option.value = slugify(cidade);
+        option.textContent = cidade;
+        selectCidade.appendChild(option);
+      });
+
+      selectCidade.disabled = false;
+    });
+  }
+
+  // Filtra os cards de "Imóveis em Destaque" pela cidade escolhida.
+  // Hoje só existem imóveis cadastrados em Teresina e Timon.
+  function filtrarImoveis(cidadeSlug) {
+    if (!listaImoveis) return;
+
+    const cards = listaImoveis.querySelectorAll('.imovel.destaque');
+    let algumVisivel = false;
+
+    cards.forEach((card) => {
+      const cidadeDoCard = card.dataset.cidade;
+      const deveMostrar = !cidadeSlug || cidadeDoCard === cidadeSlug;
+      card.classList.toggle('oculto', !deveMostrar);
+      if (deveMostrar) algumVisivel = true;
     });
 
-    selectCidade.disabled = false;
-  });
+    if (!mensagemBusca) return;
+
+    if (!cidadeSlug) {
+      mensagemBusca.hidden = true;
+      mensagemBusca.textContent = '';
+      return;
+    }
+
+    if (cidadesComImoveis.includes(cidadeSlug) && algumVisivel) {
+      mensagemBusca.hidden = true;
+      mensagemBusca.textContent = '';
+    } else {
+      mensagemBusca.hidden = false;
+      mensagemBusca.textContent =
+        'No momento, temos imóveis cadastrados apenas em Teresina - PI e Timon - MA. Fale com a gente pelo WhatsApp para saber sobre novos lançamentos na sua cidade.';
+    }
+  }
 
   // Ação do botão Buscar
-  botaoBuscar.addEventListener('click', () => {
-    const estado = selectEstado.value;
-    const cidade = selectCidade.value;
+  if (botaoBuscar && selectEstado && selectCidade) {
+    botaoBuscar.addEventListener('click', () => {
+      const estado = selectEstado.value;
+      const cidade = selectCidade.value;
 
-    if (!estado) {
-      alert('Selecione um estado para continuar.');
-      selectEstado.focus();
-      return;
-    }
+      if (!estado) {
+        alert('Selecione um estado para continuar.');
+        selectEstado.focus();
+        return;
+      }
 
-    if (!cidade) {
-      alert('Selecione uma cidade para continuar.');
-      selectCidade.focus();
-      return;
-    }
+      if (!cidade) {
+        alert('Selecione uma cidade para continuar.');
+        selectCidade.focus();
+        return;
+      }
 
-    // Aqui você troca pela lógica real (redirecionar, filtrar imóveis, chamar API, etc.)
-    console.log('Buscando imóveis em:', { estado, cidade });
+      filtrarImoveis(cidade);
 
-    // Exemplo de redirecionamento para uma página de resultados:
-    // window.location.href = `imoveis.html?estado=${estado}&cidade=${cidade}`;
-  });
+      const secaoDestaques = document.querySelector('.section-destaques');
+      if (secaoDestaques) {
+        secaoDestaques.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  }
 
-});
-
-document.addEventListener('DOMContentLoaded', () => {
+  // Animação de revelação ao rolar a página
   const elementos = document.querySelectorAll('.reveal');
 
   const observer = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
       if (entry.isIntersecting) {
         entry.target.classList.add('visible');
-        observer.unobserve(entry.target); // anima só uma vez
+        observer.unobserve(entry.target);
       }
     });
   }, {
-    threshold: 0.15, // dispara quando 15% do elemento estiver visível
-    rootMargin: '0px 0px -50px 0px' // dispara um pouco antes de chegar no fim da tela
+    threshold: 0.15,
+    rootMargin: '0px 0px -50px 0px'
   });
 
   elementos.forEach(el => observer.observe(el));
+
 });
