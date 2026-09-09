@@ -11,7 +11,7 @@
   --color-on-secondary: #1f2a3d;
   --color-on-secondary-soft: rgba(31, 42, 61, 0.72);
 
-   /* raio padrão pros controles pequenos (select, botão de busca) */
+  /* raio padrão pros controles pequenos (select, botão de busca) */
   --radius-control: 8px;
 
   /* Cor exclusiva do botão do WhatsApp */
@@ -79,7 +79,9 @@ body h3 {
 .reveal {
   opacity: 0;
   transform: translateY(40px);
-  transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+  transition:
+    opacity 0.7s ease-out,
+    transform 0.7s ease-out;
 }
 
 /* Estado visível, adicionado via JS */
@@ -89,12 +91,24 @@ body h3 {
 }
 
 /* Efeito cascata quando vários elementos aparecem juntos */
-.blocos .reveal:nth-child(1) { transition-delay: 0s; }
-.blocos .reveal:nth-child(2) { transition-delay: 0.15s; }
-.motivos .reveal:nth-child(1) { transition-delay: 0s; }
-.motivos .reveal:nth-child(2) { transition-delay: 0.1s; }
-.motivos .reveal:nth-child(3) { transition-delay: 0.2s; }
-.motivos .reveal:nth-child(4) { transition-delay: 0.3s; }
+.blocos .reveal:nth-child(1) {
+  transition-delay: 0s;
+}
+.blocos .reveal:nth-child(2) {
+  transition-delay: 0.15s;
+}
+.motivos .reveal:nth-child(1) {
+  transition-delay: 0s;
+}
+.motivos .reveal:nth-child(2) {
+  transition-delay: 0.1s;
+}
+.motivos .reveal:nth-child(3) {
+  transition-delay: 0.2s;
+}
+.motivos .reveal:nth-child(4) {
+  transition-delay: 0.3s;
+}
 
 /* ==================== Cabeçalho ==================== */
 
@@ -210,7 +224,10 @@ header .menu {
   font-weight: bold;
   gap: 9px;
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .buscar:hover {
@@ -329,6 +346,7 @@ ul a:hover {
   display: none;
 }
 
+
 @media (min-width: 979px) {
   .header .botao-whatsapp {
     display: none;
@@ -413,13 +431,27 @@ ul a:hover {
 }
 
 @keyframes passar {
-  0% { transform: translateX(0); }
-  30% { transform: translateX(0); }
-  33.333% { transform: translateX(-33.333%); }
-  63.333% { transform: translateX(-33.333%); }
-  66.666% { transform: translateX(-66.666%); }
-  96.666% { transform: translateX(-66.666%); }
-  100% { transform: translateX(0); }
+  0% {
+    transform: translateX(0);
+  }
+  30% {
+    transform: translateX(0);
+  }
+  33.333% {
+    transform: translateX(-33.333%);
+  }
+  63.333% {
+    transform: translateX(-33.333%);
+  }
+  66.666% {
+    transform: translateX(-66.666%);
+  }
+  96.666% {
+    transform: translateX(-66.666%);
+  }
+  100% {
+    transform: translateX(0);
+  }
 }
 
 /* --- Apresentação / CTAs --- */
@@ -459,13 +491,19 @@ ul a:hover {
 .agenda {
   margin: 0;
   padding: 48px 28px;
-  background: linear-gradient(155deg, var(--color-primary) 0%, var(--color-primary-hover) 100%);
+  background: linear-gradient(
+    155deg,
+    var(--color-primary) 0%,
+    var(--color-primary-hover) 100%
+  );
   border-radius: var(--radius-card);
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 14px 30px -14px var(--color-shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .agenda:hover {
@@ -487,13 +525,19 @@ ul a:hover {
 .simule {
   margin: 0;
   padding: 48px 28px;
-  background: linear-gradient(155deg, var(--color-secondary) 0%, var(--color-secondary-hover) 100%);
+  background: linear-gradient(
+    155deg,
+    var(--color-secondary) 0%,
+    var(--color-secondary-hover) 100%
+  );
   border-radius: var(--radius-card);
   cursor: pointer;
   text-align: center;
   box-sizing: border-box;
   box-shadow: 0 14px 30px -14px var(--color-shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .simule:hover {
@@ -551,7 +595,9 @@ ul a:hover {
   border-radius: var(--radius-card);
   overflow: hidden;
   box-shadow: 0 10px 24px -14px var(--color-shadow);
-  transition: transform 0.25s ease, box-shadow 0.25s ease;
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .imovel.destaque:hover {
@@ -655,11 +701,20 @@ ul a:hover {
   display: flex;
   flex-direction: column;
   gap: 12px;
+  position: relative;
+  background-image: url('/img/logo.png');
+  background-repeat: no-repeat;
+  background-position: left top;
+  background-size: 90px;
+  padding-top: 4px;
+  padding-left: 110px;
+  min-height: 90px; /* garante altura mínima pra logo aparecer inteira mesmo com pouco texto */
 }
 
 .footer-marca .logo-nome {
   justify-content: flex-start;
 }
+
 
 .footer-nome {
   margin: 0;
@@ -709,4 +764,31 @@ ul a:hover {
 
 .footer-base p {
   margin: 0;
+}
+
+.footer-base {
+  border-top: 1px solid rgba(255, 255, 255, 0.12);
+  padding: 18px 30px;
+  text-align: center;
+  font-size: 13px;
+}
+
+.footer-base p {
+  margin: 0;
+}
+
+/* Rodapé: logo diminui e vira fundo centralizado no topo em telas menores */
+@media (max-width: 600px) {
+  .footer-marca {
+    background-position: center top;
+    background-size: 64px;
+    padding-left: 0;
+    padding-top: 76px;
+    text-align: center;
+  }
+
+  .footer-marca p {
+    max-width: none;
+    margin: 0 auto;
+  }
 }

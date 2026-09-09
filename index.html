@@ -4,8 +4,16 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph / WhatsApp preview -->
+  <meta property="og:title" content="NTN Construtora | Encontre o apê dos seus sonhos">
+  <meta property="og:description" content="Construindo lares e transformando futuros em todo o Brasil, com mais de 550 mil chaves entregues. Financiamento facilitado com Minha Casa Minha Vida.">
+  <meta property="og:image" content="https://www.seudominio.com.br/img/preview.png">
+  <meta property="og:url" content="https://www.seudominio.com.br/index.html">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="NTN Construtora">
   <title>NTN Construtora | Início</title>
   <link rel="stylesheet" href="./assets/styles.css">
+  <link rel="icon" type="image/png" href="./img/logo.png">
   <script src="./assets/script.js" defer></script>
 </head>
 
@@ -13,16 +21,16 @@
   <header class="header">
 
     <!-- Logo -->
+    <a href="index.html" class="logo-nome-link" aria-label="Ir para o início">
+      <span class="logo-nome">
 
-    <span class="logo-nome">
+        <img src="./img/logo.png" alt="Logo" class="logo">
 
-      <img src="./img/logo.png" alt="Logo" class="logo">
+        <!-- NTN Construtora -->
+        <h1 class="header-nome"> <span class="ntn">NTN</span> <span class="construtora">Construtora</span></h1>
 
-      <!-- NTN Construtora -->
-      <h1 class="header-nome"> <span class="ntn">NTN</span> <span class="construtora">Construtora</span></h1>
-
-    </span>
-
+      </span>
+    </a>
     <nav class="nav">
 
       <!-- Menu // -- Desabilitado para formato celular -->
@@ -45,6 +53,7 @@
           <option value="">Cidade</option>
         </select>
 
+        <!-- Botão de busca -->
         <button class="buscar" type="button">
           <span class="icone-busca">⌕</span>
           <span class="texto-busca">Buscar</span>
@@ -81,6 +90,7 @@
       </div>
     </section>
 
+    <!-- Seção de texto -->
     <section class="section2">
 
       <div class="texto-ape reveal">
@@ -89,6 +99,7 @@
         <h3>Conquistar a <span class="bold">casa própria</span> é um grande passo: um lar só seu, o fim do aluguel e um futuro melhor. A <span class="bold">NTN Construtora</span> tem soluções para cada momento de vida, em todo o Brasil, com financiamento e condições exclusivas. Conte com quem mais entende de <span class="bold">Minha Casa Minha Vida</span> e já entregou mais de 550 mil chaves. Se você chegou até aqui, é porque tem um apê NTN Construtora pra transformar seu futuro hoje!!</h3>
       </div>
 
+      <!-- Blocos de ação -->
       <section class="blocos">
         <div class="agenda reveal">
           <h2><span class="bold">Agende sua Visita</span></h2>
@@ -113,7 +124,7 @@
       <!-- Lista de imóveis em destaque -->
       <div class="lista-imoveis">
         <div class="imovel destaque reveal" data-cidade="teresina">
-          <img src="./img/imovel1.png" alt="Fachada do Residencial Ipê, em Teresina">
+          <img src="./img/img1.jpg" alt="Fachada do Residencial Ipê, em Teresina">
           <div class="imovel-corpo">
             <span class="imovel-cidade">Teresina - PI</span>
             <h3>Residencial Ipê</h3>
@@ -122,7 +133,7 @@
         </div>
 
         <div class="imovel destaque reveal" data-cidade="teresina">
-          <img src="./img/imovel2.png" alt="Fachada do Jardins do Poti, em Teresina">
+          <img src="./img/imagem2foto.jpg" alt="Fachada do Jardins do Poti, em Teresina">
           <div class="imovel-corpo">
             <span class="imovel-cidade">Teresina - PI</span>
             <h3>Jardins do Poti</h3>
@@ -131,7 +142,7 @@
         </div>
 
         <div class="imovel destaque reveal" data-cidade="timon">
-          <img src="./img/imovel3.png" alt="Fachada do Vila Parnaíba, em Timon">
+          <img src="./img/imagem3foto.jpg" alt="Fachada do Vila Parnaíba, em Timon">
           <div class="imovel-corpo">
             <span class="imovel-cidade">Timon - MA</span>
             <h3>Vila Parnaíba</h3>
@@ -166,17 +177,18 @@
 
   </main>
 
+  <!-- Rodapé -->
   <footer class="footer">
+
+    <!-- Conteúdo do Rodapé -->
     <div class="footer-conteudo">
 
       <div class="footer-coluna footer-marca">
-        <span class="logo-nome">
-          <img src="./img/logo.png" alt="Logo NTN Construtora" class="logo">
-          <h2 class="footer-nome"><span class="ntn">NTN</span> <span class="construtora">Construtora</span></h2>
-        </span>
+        <h2 class="footer-nome"><span class="ntn">NTN</span> <span class="construtora">Construtora</span></h2>
         <p>Construindo lares e transformando futuros em todo o Brasil, com mais de 550 mil chaves entregues.</p>
       </div>
 
+      <!-- Links Rápidos -->
       <div class="footer-coluna">
         <h3 class="footer-titulo">Links rápidos</h3>
         <ul class="footer-links">
