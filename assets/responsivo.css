@@ -26,7 +26,7 @@
 
 @media (max-width: 536px) {
   .botao-whatsapp:hover {
-    background-color: #1ebe5b;
+    background-color: var(--color-whatsapp-hover);
   }
 
   .buscar .texto-busca {
@@ -44,9 +44,22 @@
   }
 }
 
-/* UL fora do media, verificar depois */
-.header ul {
-  display: none;
+@media (max-width: 390px) {
+  .header .menu {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .buscar {
+    padding: 5px;
+    font-size: 30px;
+  }
+
+  .buscar .icone-busca {
+    padding: 3px;
+    font-size: 32px;
+  }
 }
 
 @media (max-width: 350px) {

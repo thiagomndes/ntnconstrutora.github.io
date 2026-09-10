@@ -1,4 +1,4 @@
-/* --- Section 1 --- */
+/* --- Carrossel --- */
 
 .carousel {
   max-width: 1340px;
@@ -17,16 +17,15 @@
   animation: passar 18s infinite;
 }
 
-/* Imagens dentro do carrossel */
 .slides img {
   max-width: 100%;
   display: block;
   width: 33.333%;
   height: 100%;
   object-fit: cover;
-  object-position: center; /* corta a imagem */
+  object-position: center;
 }
-/* Animação */
+
 @keyframes passar {
   0% {
     transform: translateX(0);
@@ -51,7 +50,7 @@
   }
 }
 
-/* --- Section 2 --- */
+/* --- Apresentação / CTAs --- */
 
 .section2 {
   max-width: 1330px;
@@ -70,7 +69,7 @@
 }
 
 .texto-ape h3 {
-  max-width: 62ch; /* mantém a linha confortável de ler, mesmo em telas largas */
+  max-width: 62ch;
   text-align: justify;
 }
 
@@ -85,7 +84,6 @@
   margin: 40px 0;
 }
 
-/* Card "Agende sua Visita" — cor primária, tom quente de ação */
 .agenda {
   margin: 0;
   padding: 48px 28px;
@@ -120,7 +118,6 @@
   margin: 0;
 }
 
-/* Card "Simule seu Financiamento" — cor secundária, tom sóbrio de confiança */
 .simule {
   margin: 0;
   padding: 48px 28px;
@@ -153,4 +150,128 @@
   text-align: center;
   color: var(--color-on-secondary-soft);
   margin: 0;
+}
+
+/* --- Imóveis em destaque --- */
+
+.section-destaques {
+  max-width: 1330px;
+  padding: 30px 30px 10px;
+  margin: 0 auto;
+}
+
+.titulo-secao {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 24px;
+}
+
+.busca-mensagem {
+  margin: 0 0 24px;
+  padding: 16px 20px;
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface-muted);
+  border: 1px solid var(--color-border-light);
+  color: var(--color-text-medium);
+}
+
+.busca-mensagem[hidden] {
+  display: none;
+}
+
+.lista-imoveis {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 24px;
+}
+
+.imovel.destaque {
+  background-color: var(--color-surface);
+  border-radius: var(--radius-card);
+  overflow: hidden;
+  box-shadow: 0 10px 24px -14px var(--color-shadow);
+  transition:
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
+}
+
+.imovel.destaque:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 18px 32px -16px var(--color-shadow);
+}
+
+.imovel.destaque img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  display: block;
+}
+
+.imovel-corpo {
+  padding: 18px 20px 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.imovel-cidade {
+  font-size: 13px;
+  font-weight: bold;
+  color: var(--color-primary);
+}
+
+.imovel-corpo h3 {
+  margin: 0;
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.imovel-corpo p {
+  margin: 0;
+  color: var(--color-text-medium);
+}
+
+/* Card escondido pela busca (mantido no DOM, só oculto visualmente) */
+.imovel.destaque.oculto {
+  display: none;
+}
+
+/* --- Por que escolher a NTN --- */
+
+.section-porque {
+  max-width: 1330px;
+  padding: 40px 30px 60px;
+  margin: 0 auto;
+}
+
+.section-porque > h2 {
+  margin: 0 0 28px;
+}
+
+.motivos {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 22px;
+}
+
+.motivo {
+  padding: 24px 22px;
+  border-radius: var(--radius-control);
+  background-color: var(--color-surface);
+  border-left: 4px solid var(--color-primary);
+  box-shadow: 0 8px 20px -16px var(--color-shadow);
+}
+
+.motivo-titulo {
+  margin: 0 0 8px;
+  font-size: 1.02rem;
+  font-weight: 600;
+  color: var(--color-text-dark);
+}
+
+.motivo p {
+  margin: 0;
+  color: var(--color-text-medium);
 }

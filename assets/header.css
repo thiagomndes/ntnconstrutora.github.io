@@ -1,4 +1,5 @@
-/* Cabeçalho */
+/* ==================== Cabeçalho ==================== */
+
 .header {
   display: flex;
   max-width: 1399px;
@@ -8,10 +9,13 @@
   justify-content: space-between;
   align-items: center;
   background-color: #f8f8f8;
-  box-shadow: 0 2px 4px var(--color-shadow); /* AJUSTE: usa a variável de sombra ao invés de rgba solta */
+  box-shadow: 0 2px 4px var(--color-shadow);
 }
 
-/* Campos de busca e botão whatsapp */
+.header a {
+  text-decoration: none;
+}
+
 .header .nav {
   display: flex;
   gap: 10px;
@@ -23,19 +27,15 @@ header .logo {
   justify-content: flex-start;
   align-items: center;
   height: 60px;
-  width: auto; /* AJUSTE: "0 auto" não é um valor válido pra width, corrigido */
+  width: auto;
   cursor: pointer;
-}
-
-.logo-nome-link {
-  text-decoration: none; /* AJUSTE: remove underline do link */
 }
 
 .header .header-nome {
   height: 50px;
   cursor: pointer;
-  font-weight: 700; /* AJUSTE: deixa o nome da marca com mais peso visual */
-  letter-spacing: -0.01em; /* AJUSTE: aperta um pouco o rastreamento pra parecer mais "logotipo" */
+  font-weight: 700;
+  letter-spacing: -0.01em;
 }
 
 .header .logo-nome {
@@ -49,12 +49,12 @@ header .logo {
   color: var(--color-primary);
 }
 .header .construtora {
-  color: var(--color-secondary-hover); /* AJUSTE: era --color-secondary; o hover tem mais contraste ao lado do "NTN" em vermelho */
+  color: var(--color-secondary-hover);
 }
 
 header .menu {
   display: flex;
-  justify-content: center; /* AJUSTE: corrigido typo "justtify-content" */
+  justify-content: center;
   flex-wrap: wrap;
   gap: 10px;
 }
@@ -73,14 +73,14 @@ header .menu {
   height: 48px;
   padding: 0 10px 0 12px;
   border: 2px solid var(--color-border-light);
-  border-radius: var(--radius-control); /* AJUSTE: usa token ao invés de 8px fixo */
+  border-radius: var(--radius-control);
   background-color: var(--color-white);
   color: var(--color-text-light);
   font-size: 15px;
   cursor: pointer;
   appearance: none;
   background-repeat: no-repeat;
-  transition: border-color 0.2s ease; /* AJUSTE: transição suave ao focar */
+  transition: border-color 0.2s ease;
 
   /* Seta (o SVG é embutido via data-uri, por isso a cor vai em hexadecimal
      codificado como %23 = # ; se trocar --color-primary, troque aqui também) */
@@ -89,8 +89,6 @@ header .menu {
   background-position: right 10px center;
 }
 
-/* Campo de cidade desativado */
-
 .busca-imoveis select:disabled {
   background-color: var(--color-bg-disabled);
   border-color: var(--color-border-disabled);
@@ -98,39 +96,38 @@ header .menu {
   cursor: not-allowed;
 }
 
-/* Quando estiver ativo */
-
 .busca-imoveis select:focus {
   border-color: var(--color-primary);
-  outline: none; /* AJUSTE: remove o outline padrão do navegador já que a borda colorida cumpre esse papel */
+  outline: none;
 }
 
 /* Botão de busca */
-
 .buscar {
   display: flex;
   align-items: center;
   justify-content: center;
   height: 46px;
-  padding: 0 18px; /* AJUSTE: era "0 8px", ficava muito apertado do lado do texto "Buscar" */
+  padding: 0 18px;
   border: none;
-  border-radius: var(--radius-control); /* AJUSTE: usa token */
+  border-radius: var(--radius-control);
   background-color: var(--color-primary);
   color: var(--color-white);
   font-size: 15px;
   font-weight: bold;
   gap: 9px;
   cursor: pointer;
-  transition: background-color 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease; /* AJUSTE: transição consistente com os cards */
+  transition:
+    background-color 0.25s ease,
+    transform 0.25s ease,
+    box-shadow 0.25s ease;
 }
 
 .buscar:hover {
   background-color: var(--color-primary-hover);
-  transform: translateY(-2px); /* AJUSTE: mesma linguagem de "elevação" usada nos cards */
+  transform: translateY(-2px);
   box-shadow: 0 8px 16px -8px var(--color-shadow);
 }
 
-/* Ícone de Busca */
 .icone-busca {
   font-size: 27px;
   line-height: 0;
@@ -158,12 +155,10 @@ header .menu {
   background-color: var(--color-whatsapp-hover);
 }
 
-/* Texto do botão */
 .texto-wpp {
   white-space: nowrap;
 }
 
-/* AVATAR QUE "VAZA" PRA FORA DO BOTÃO */
 .avatar-wpp {
   position: absolute;
   right: -18px;
@@ -177,7 +172,6 @@ header .menu {
   overflow: visible;
 }
 
-/* Imagem do avatar */
 .avatar-wpp img {
   width: 100%;
   height: 100%;
@@ -186,7 +180,6 @@ header .menu {
   display: block;
 }
 
-/* BOLINHA VERDE DE STATUS ONLINE */
 .status-wpp {
   position: absolute;
   bottom: 2px;
@@ -212,11 +205,11 @@ header .menu {
   justify-content: center;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.3);
   z-index: 999;
-  transition: background-color 0.2s ease; /* AJUSTE: faltava transição no hover */
+  transition: background-color 0.2s ease;
 }
 
 .botao-whatsapp:hover {
-  background-color: var(--color-whatsapp-hover); /* AJUSTE: era um hex solto (#1ebe5b) diferente do hover já definido em root */
+  background-color: var(--color-whatsapp-hover);
 }
 
 header ul {
@@ -232,10 +225,15 @@ ul a {
   text-decoration: none;
   font-weight: bold;
   padding: 5px 5px;
-  color: var(--color-text-medium); /* AJUSTE: era #333 fixo, agora usa o token de texto */
-  transition: color 0.2s ease; /* AJUSTE: prepara a transição pro hover abaixo */
+  color: var(--color-text-medium);
+  transition: color 0.2s ease;
 }
 
 ul a:hover {
-  color: var(--color-primary); /* AJUSTE: novo — links do menu reagem com a cor da marca ao passar o mouse */
+  color: var(--color-primary);
+}
+
+/* UL fora do media, aplicado por padrão (o menu de texto some, sobra a busca) */
+.header ul {
+  display: none;
 }
