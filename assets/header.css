@@ -16,10 +16,15 @@
   text-decoration: none;
 }
 
+.logo-nome-link {
+  min-width: 0; /* permite encolher sem sobrepor outros elementos */
+}
+
 .header .nav {
   display: flex;
   gap: 10px;
   flex-wrap: wrap;
+  min-width: 0; /* permite encolher sem sobrepor a logo */
 }
 
 header .logo {
@@ -64,11 +69,12 @@ header .menu {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-wrap: wrap; /* movido para o container, não para os selects */
   gap: 10px;
+  min-width: 0; /* permite encolher sem sobrepor a logo */
 }
 
 .busca-imoveis select {
-  flex-wrap: wrap;
   width: 150px;
   height: 48px;
   padding: 0 10px 0 12px;
